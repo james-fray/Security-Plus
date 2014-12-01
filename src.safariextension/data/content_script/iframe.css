@@ -1,0 +1,88 @@
+a:link,
+a:visited,
+a:hover,
+a:active {
+  color: #1155CC;
+  text-decoration: none;
+}
+
+.item {
+  height: 30px;
+  line-height: 20px;
+  align-items: center;
+  -webkit-align-items: center;
+  border: solid 1px #CDCDCD;
+  background-color: #F1F1F1;
+  margin: 2px 0;
+}
+.item[transition="fadeout"] {
+  transition: opacity 0.2s ease;
+  opacity: 0;
+}
+
+.icon {
+  width: 16px;
+  min-width: 16px;
+  height: 16px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  margin: 0 5px;
+}
+.item[type="progress"] .icon {
+  background-image: url('load.gif');
+}
+.item[type="queue"] .icon {
+  background-image: url('wait.png');
+}
+.item[type="clean"] .icon {
+  background-image: url('clean.png');
+}
+.item[type="defected"] .icon,
+.item[type="failed"] .icon {
+  background-image: url('defected.png');
+}
+.icon[type="close"] {
+  background-image: url('close.png') !important;
+  opacity: 0.5;
+  cursor: pointer;
+}
+.icon[type="close"]:hover {
+  opacity: 1;
+}
+
+.report {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  border-right: solid 1px #CDCDCD;
+  padding-left: 5px;
+  width: 200px;
+}
+.item[type="progress"] .report{
+  font-weight: bold;
+}
+.item[type="wait"] .report {
+  color: #5D5E5E;
+}
+.item[type="clean"] .report {
+  color: #33AF99;
+}
+.item[type="defected"] .report,
+.item[type="failed"] .report {
+  color: #ED3237;
+}
+
+.url {
+  display: flex;
+  display: -webkit-flex;
+  flex: 1;
+  -webkit-flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  margin: 0 5px;
+  text-overflow: ellipsis;
+}
+
+.result {
+  font-weight: bold;
+}

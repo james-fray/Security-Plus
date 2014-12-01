@@ -1,0 +1,17 @@
+{
+  "fullName": "Security Plus",
+  "name": "isplus",
+  "description": "A wrapper to VirusTotal which is a free virus, malware scanning service. URL checking is done with more than 40 antivirus solutions.",
+  "id": "jid0-DjsrWcAS3Wgq2xyyqqVL8Dqk1Lo",
+  "license": "mozilla public license 1.1",
+  "version": "0.1.0",
+  "author": "James Fray",
+  "lib": "lib",
+  "main": "common",
+  "url": "http://add0n.com/security-plus.html",
+  "icon": "data/icons/32.png",
+  "icon64": "data/icons/64.png",
+  "permissions": {
+    "private-browsing": true
+  }
+}

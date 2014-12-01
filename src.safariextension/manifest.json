@@ -1,0 +1,35 @@
+{
+  "name": "Security Plus",
+  "short_name": "isplus",
+  "description": "A wrapper to VirusTotal which is a free virus, malware scanning service. URL checking is done with more than 40 antivirus solutions.",
+  "author": "James Fray",
+  "version": "0.1.0",
+  "manifest_version": 2,
+  "permissions": [
+    "storage",
+    "tabs",
+    "notifications",
+    "background",
+    "contextMenus",
+    "https://www.virustotal.com/vtapi/*"
+  ],
+  "web_accessible_resources": [],
+  "background": {
+    "page": "lib/chrome/background.html"
+  },
+  "content_scripts": [{
+    "matches": ["<all_urls>"],
+    "js": ["data/content_script/inject.js"],
+    "run_at": "document_start",
+    "all_frames": false
+  }],
+  "web_accessible_resources": [
+    "data/content_script/*"
+  ],
+  "homepage_url": "http://add0n.com/security-plus.html",
+  "icons": {
+    "16": "data/icons/16.png",
+    "48": "data/icons/48.png",
+    "128": "data/icons/128.png"
+  }
+}
