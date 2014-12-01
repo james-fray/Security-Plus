@@ -36,7 +36,6 @@ var virustotal = {
           app.timer.setTimeout(function () {
             virustotal.get(url, data, d);
           }, config.virustotal.get.interval * 1000 - diff + 500);
-          console.error('get request is delayed for %i msecs', config.virustotal.get.interval * 1000 - diff + 500);
           return d.promise;
         }
       }
@@ -46,8 +45,7 @@ var virustotal = {
     }
   })(),
   scan: function (url) {
-    var url = "https://www.virustotal.com/vtapi/v2/url/scan";
-    return virustotal.get(url, {
+    return virustotal.get("https://www.virustotal.com/vtapi/v2/url/scan", {
       url: url,
       apikey: key
     })
@@ -72,8 +70,7 @@ var virustotal = {
   report: (function () {
     var num = 0;
     function checkOnce (resource) {
-      var url = "http://www.virustotal.com/vtapi/v2/url/report";
-      return virustotal.get(url, {
+      return virustotal.get("http://www.virustotal.com/vtapi/v2/url/report", {
         resource: resource,
         apikey: key
       })
@@ -86,7 +83,6 @@ var virustotal = {
         }
         var j = JSON.parse(response.responseText || response.text);
         if (j.response_code !== 1) {
-          console.error(j.verbose_msg);
           throw Error('virustotal -> report -> checkOnce -> server rejection, ' + j.verbose_msg);
         }
         return {
@@ -96,8 +92,8 @@ var virustotal = {
         }
       });
     }
-    function sumup (resource) {
-      var d = app.Promise.defer();
+    function sumup (resource, d) {
+      d = d || app.Promise.defer();
       num += 1;
       checkOnce(resource).then(
         function (o) {
@@ -106,7 +102,7 @@ var virustotal = {
         function (e) {
           if (num < config.virustotal.report.iteration) {
             app.timer.setTimeout(function () {
-              sumup(resource);
+              sumup(resource, d);
             }, config.virustotal.report.interval * 1000);
           }
           else {
@@ -192,7 +188,6 @@ function onContextmenu (url) {
     id: id
   });
   virustotal.queue(url, id, function (obj) {
-    console.error(obj);
     if (obj instanceof Error) {
       app.content_script.send("update-item", {
         type: "failed",

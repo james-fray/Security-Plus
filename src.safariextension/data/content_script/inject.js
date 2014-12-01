@@ -1,5 +1,6 @@
 var background = {}, manifest = {};
-console.error(9);
+var isSafari = typeof safari !== 'undefined';
+
 /**** wrapper (start) ****/
 if (typeof self !== 'undefined' && self.port) { //Firefox
   background.send = function (id, data) {
@@ -37,7 +38,6 @@ else if (typeof safari !== 'undefined') { // Safari
     while(target != null && target.nodeType == Node.ELEMENT_NODE && target.nodeName.toLowerCase() != "a") {
         target = target.parentNode;
     }
-    console.error(target.href);
     safari.self.tab.setContextMenuEventUserInfo(event, target.href);
   }, false);
 }
@@ -118,7 +118,7 @@ var iframe = (function () {
   }
 })();
 
-if (window.top === window) {
+if (window.top === window && (document.contentType === "text/html" || isSafari )) {
   // message passing
   window.addEventListener("message", function (e) {
     if (e.data && e.data.command && e.data.from && e.data.from === "security-plus") {

@@ -1,6 +1,6 @@
 var isFirefox = typeof require !== 'undefined';
 if (isFirefox) {
-  var app = require('./firefox/firefox.js');
+  var app = require('./firefox/firefox');
   var os = require("sdk/system").platform;
   config = exports;
 }

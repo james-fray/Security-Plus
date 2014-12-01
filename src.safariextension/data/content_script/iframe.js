@@ -1,5 +1,4 @@
 var isSafari = navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('Chrome') == -1;
-console.error(isSafari);
 
 function insert (o) {
   var item = document.getElementById("item").cloneNode(true);
