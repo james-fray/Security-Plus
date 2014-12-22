@@ -1,9 +1,9 @@
 {
   "name": "Security Plus",
   "short_name": "isplus",
-  "description": "A wrapper to VirusTotal which is a free virus, malware scanning service. URL checking is done with more than 40 antivirus solutions.",
+  "description": "Security Plus provides free checking of urls for viruses. It uses up to 64 different antivirus products and scan engines to check for viruses.",
   "author": "James Fray",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "manifest_version": 2,
   "permissions": [
     "storage",

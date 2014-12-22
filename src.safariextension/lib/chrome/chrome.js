@@ -30,7 +30,7 @@ app.get = function (url, data) {
   if (data) {
     var arr = [];
     for(e in data) {
-      arr.push(e + "=" + data[e]);
+      arr.push(e + "=" + encodeURIComponent(data[e]));
     }
     data = arr.join("&");
     xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded; charset=UTF-8");

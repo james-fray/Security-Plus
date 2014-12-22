@@ -13,9 +13,9 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.1.0</string>
+	<string>0.1.1</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>2</string>
 	<key>Chrome</key>
 	<dict>
 		<key>Database Quota</key>
@@ -39,7 +39,7 @@
 		</array>
 	</dict>
 	<key>Description</key>
-	<string>Security plus analyzes suspicious URLs for viruses, worms, trojans, and all kinds of malware</string>
+	<string>Security Plus provides free checking of urls for viruses with up to 64 different antivirus products.</string>
 	<key>DeveloperIdentifier</key>
 	<string>2C3W8RZ8ND</string>
 	<key>ExtensionInfoDictionaryVersion</key>

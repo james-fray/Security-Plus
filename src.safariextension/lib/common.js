@@ -57,6 +57,9 @@ var virustotal = {
         throw Error('virustotal -> scan -> server response is empty');
       }
       var j = JSON.parse(response.responseText || response.text);
+      if (j.response_code === 0) {
+        throw Error('virustotal -> scan -> server rejection, The requested resource is not among the finished, queued or pending scans');
+      }
       if (j.response_code !== 1) {
         throw Error('virustotal -> scan -> server rejection, ' + j.verbose_msg);
       }
@@ -67,7 +70,7 @@ var virustotal = {
       }
     });
   },
-  report: (function () {
+  report: function () {
     var num = 0;
     function checkOnce (resource) {
       return virustotal.get("http://www.virustotal.com/vtapi/v2/url/report", {
@@ -79,7 +82,7 @@ var virustotal = {
           throw Error('virustotal -> report -> exceeded the request rate limit');
         }
         if (!response.responseText && !response.text) {
-          throw Error('virustotal -> report -> checkOnce -> server response is empty');
+          throw Error('virustotal -> report -> checkOnce -> not queued');
         }
         var j = JSON.parse(response.responseText || response.text);
         if (j.response_code !== 1) {
@@ -100,6 +103,10 @@ var virustotal = {
           d.resolve(o);
         },
         function (e) {
+          if (e.message = "virustotal -> report -> checkOnce -> not queued") {
+            d.reject(Error('virustotal -> report -> sumup -> The requested resource is not among the finished, queued or pending scans. Broken URL?'));
+            return;
+          }
           if (num < config.virustotal.report.iteration) {
             app.timer.setTimeout(function () {
               sumup(resource, d);
@@ -116,7 +123,7 @@ var virustotal = {
     return function (resource) {
       return sumup(resource);
     }
-  })(),
+  },
   queue: (function () {
     var q = [], onGoing = false;
     function execute() {
@@ -138,7 +145,7 @@ var virustotal = {
       onGoing = true;
       virustotal.scan(o.url)
       .then(function (obj) {
-        return new virustotal.report(obj.scan_id);
+        return (new virustotal.report)(obj.scan_id);
       })
       .then(result.bind(null, o.callback, o.id), result.bind(null, o.callback, o.id));
     }
@@ -199,7 +206,7 @@ function onContextmenu (url) {
     else {
       app.content_script.send("update-item", {
         type: obj.positives ? "defected" : "clean",
-        report: obj.positives ? "Link is defected" : "Link is clean",
+        report: obj.positives ? (obj.positives < 4 ? "Suspicious site" : "Malware site") : "Clean site",
         id: obj.id,
         result: summary(obj)
       }, true);
