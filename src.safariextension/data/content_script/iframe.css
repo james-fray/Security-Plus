@@ -86,3 +86,11 @@ a:active {
 .result {
   font-weight: bold;
 }
+
+.result a:link,
+.result a:visited,
+.result a:hover,
+.result a:active {
+  color: #000;
+  text-decoration: none;
+}
