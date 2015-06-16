@@ -103,18 +103,33 @@ var iframe = (function () {
   }
 
   return {
-    initiate: function () {
-      frm = html('iframe', {
-        style: 'display: none; overflow: hidden; position: fixed; background-color: transparent; bottom: 0; left: 10%; width: 80%; z-index: 2147483647; border: none;',
-        src: 'data:text/html;base64,' + btoa(code)
-      }, document.body);
+    initiate: function (callback) {
+      if (frm) {
+        callback();
+      }
+      else {
+        frm = html('iframe', {
+          style: 'display: none; overflow: hidden; position: fixed; background-color: transparent; bottom: 0; left: 10%; width: 80%; z-index: 2147483647; border: none;',
+          src: 'data:text/html;base64,' + btoa(code)
+        }, document.body);
+        frm.addEventListener('load', function () {
+          if (callback) {
+            callback();
+          }
+        });
+      }
     },
     unload: function () {
       frm.parentNode.removeChild(frm);
     },
-    insert: function (id) {
-      ids.push(id);
-      height();
+    insert: function (id, callback) {
+      this.initiate(function () {
+        ids.push(id);
+        height();
+        if (callback) {
+          callback();
+        }
+      });
     },
     remove: function (id) {
       id = +id;
@@ -143,25 +158,19 @@ if (window.top === window && (document.contentType === 'text/html' || isSafari))
     }
   }, false);
 
-  // init
-  window.addEventListener('DOMContentLoaded', iframe.initiate, false);
-  // In Firefox we are attaching the content script to the existing documents and hence there is no loading event
-  if (document.readyState !== 'loading') {
-    iframe.initiate();
-  }
-
   background.receive('insert-item', function (obj) {
-    iframe.insert(obj.id);
-    obj.from = 'security-plus';
-    obj.command = 'insert-item';
-    if (iframe.obj.contentWindow) {
-      iframe.obj.contentWindow.postMessage(obj, '*');
-    }
+    iframe.insert(obj.id, function () {
+      obj.from = 'security-plus';
+      obj.command = 'insert-item';
+      if (iframe.obj.contentWindow) {
+        iframe.obj.contentWindow.postMessage(obj, '*');
+      }
+    });
   });
   background.receive('update-item', function (obj) {
     obj.from = 'security-plus';
     obj.command = 'update-item';
-    if (iframe.obj.contentWindow) {
+    if (iframe.obj && iframe.obj.contentWindow) {
       iframe.obj.contentWindow.postMessage(obj, '*');
     }
   });
