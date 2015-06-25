@@ -4,7 +4,7 @@
   "description": "Security Plus provides free checking of urls for viruses. It uses up to 64 different antivirus products and scan engines to check for viruses.",
   "id": "jid0-DjsrWcAS3Wgq2xyyqqVL8Dqk1Lo",
   "license": "mozilla public license 1.1",
-  "version": "0.1.4b1",
+  "version": "0.1.4",
   "author": "James Fray",
   "lib": "lib",
   "main": "common",

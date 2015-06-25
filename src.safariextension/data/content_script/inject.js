@@ -120,7 +120,9 @@ var iframe = (function () {
       }
     },
     unload: function () {
-      frm.parentNode.removeChild(frm);
+      if (frm && frm.parentNode) {
+        frm.parentNode.removeChild(frm);
+      }
     },
     insert: function (id, callback) {
       this.initiate(function () {
