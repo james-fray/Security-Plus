@@ -5,7 +5,7 @@
 	<key>Author</key>
 	<string>James Fray</string>
 	<key>Builder Version</key>
-	<string>10600.1.25</string>
+	<string>10600.6.3</string>
 	<key>CFBundleDisplayName</key>
 	<string>Security Plus</string>
 	<key>CFBundleIdentifier</key>
@@ -13,7 +13,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.1.4</string>
+	<string>0.1.4.1</string>
 	<key>CFBundleVersion</key>
 	<string>2</string>
 	<key>Chrome</key>
@@ -41,7 +41,7 @@
 	<key>Description</key>
 	<string>Security Plus provides free checking of urls for viruses with up to 64 different antivirus products.</string>
 	<key>DeveloperIdentifier</key>
-	<string>2C3W8RZ8ND</string>
+	<string>N36DZ3K24G</string>
 	<key>ExtensionInfoDictionaryVersion</key>
 	<string>1.0</string>
 	<key>Permissions</key>
