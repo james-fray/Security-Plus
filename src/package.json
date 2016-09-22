@@ -4,12 +4,16 @@
   "description": "Security Plus provides free checking of urls for viruses. It uses up to 64 different antivirus products and scan engines to check for viruses.",
   "id": "jid0-DjsrWcAS3Wgq2xyyqqVL8Dqk1Lo@jetpack",
   "license": "MPL 2.0",
-  "version": "0.1.7",
+  "version": "0.1.7.1",
   "author": "James Fray",
   "main": "./lib/common.js",
   "url": "http://add0n.com/security-plus.html",
   "permissions": {
     "private-browsing": true,
     "multiprocess": true
+  },
+  "engines": {
+    "firefox": ">=29.0",
+    "fennec": ">=29.0"
   }
 }
