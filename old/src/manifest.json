@@ -1,0 +1,37 @@
+{
+  "name": "Link Virus Checker: Security Plus",
+  "short_name": "isplus",
+  "description": "Provides free checking of urls for viruses. It uses up to 64 different antivirus products and scan engines to check for viruses",
+  "author": "James Fray",
+  "version": "0.1.8",
+  "manifest_version": 2,
+  "permissions": [
+    "storage",
+    "tabs",
+    "notifications",
+    "contextMenus",
+    "https://www.virustotal.com/vtapi/*"
+  ],
+  "background": {
+    "scripts": [
+      "lib/chrome/chrome.js",
+      "lib/config.js",
+      "lib/common.js"
+    ]
+  },
+  "content_scripts": [{
+    "matches": ["<all_urls>"],
+    "js": ["data/content_script/chrome/chrome.js", "data/content_script/inject.js"],
+    "run_at": "document_start",
+    "all_frames": false
+  }],
+  "web_accessible_resources": [
+    "data/content_script/*"
+  ],
+  "homepage_url": "http://add0n.com/security-plus.html",
+  "icons": {
+    "16": "data/icons/16.png",
+    "48": "data/icons/48.png",
+    "128": "data/icons/128.png"
+  }
+}
