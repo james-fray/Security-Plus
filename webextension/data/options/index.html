@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Options</title>
+  <style>
+    body {
+      min-width: 500px
+    }
+    input[type=number],
+    input[type=text],
+    textarea {
+      width: 100%;
+      box-sizing: border-box;
+    }
+    td ~ td {
+      text-align: right;
+    }
+  </style>
+  <meta charset="utf-8">
+</head>
+
+<body>
+  <table width=100%>
+    <colgroup>
+      <col>
+      <col width=200>
+    </colgroup>
+    <tr>
+      <td><label for="key">VirusTotal's API Key:</label></td>
+      <td><input type="text" id="key"></td>
+    </tr>
+    <tr>
+      <td colspan="2" style="color: #7d7d7d">By default any VirusTotal Community registered user is entitled to an API key that allows them to interact with a basic set of endpoints. First <a href="https://www.virustotal.com/gui/join-us">Register</a> and then get <a href="https://www.virustotal.com/gui/user/belaviyo/apikey">your API key</a> to insert into this box. <b>Without API key this extension is not able to check your downloads.</b></td>
+    </tr>
+    <tr>
+      <td><label for=log>Enable console logging (only for debugging)</label></td>
+      <td><input type="checkbox" id="log"></td>
+    </tr>
+  </table>
+
+  <div data-cols="4" id="explore"></div>
+  <p>
+    <input type="button" value="Reset to Defaults" id="reset">
+    <input type="button" value="Support Development" id="support"> - <input type="button" value="Save" id="save"> <span id="toast"></span>
+  </p>
+
+  <script src="index.js"></script>
+  <script async src="matched.js"></script>
+</body>
+</html>

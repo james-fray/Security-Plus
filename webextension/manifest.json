@@ -3,40 +3,35 @@
   "short_name": "isplus",
   "description": "Provides free checking of urls for viruses. It uses up to 64 different antivirus products and scan engines to check for viruses",
   "author": "James Fray",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "manifest_version": 2,
   "permissions": [
     "storage",
-    "tabs",
+    "activeTab",
     "notifications",
     "contextMenus",
     "https://www.virustotal.com/vtapi/*"
   ],
   "background": {
+    "persistent": false,
     "scripts": [
-      "lib/chrome/chrome.js",
-      "lib/config.js",
-      "lib/common.js"
+      "common.js"
     ]
   },
-  "content_scripts": [{
-    "matches": ["<all_urls>"],
-    "js": ["data/content_script/chrome/chrome.js", "data/content_script/inject.js"],
-    "run_at": "document_start",
-    "all_frames": false
-  }],
   "web_accessible_resources": [
-    "data/content_script/*"
+    "data/inject/*"
   ],
-  "homepage_url": "http://add0n.com/security-plus.html",
+  "homepage_url": "https://add0n.com/security-plus.html",
   "icons": {
     "16": "data/icons/16.png",
+    "32": "data/icons/32.png",
     "48": "data/icons/48.png",
-    "128": "data/icons/128.png"
+    "64": "data/icons/64.png",
+    "128": "data/icons/128.png",
+    "256": "data/icons/256.png"
   },
-  "applications": {
-    "gecko": {
-      "id": "jid0-DjsrWcAS3Wgq2xyyqqVL8Dqk1Lo@jetpack"
-    }
+  "options_ui": {
+    "page": "data/options/index.html",
+    "chrome_style": true
   }
 }
