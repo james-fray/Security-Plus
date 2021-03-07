@@ -45,15 +45,23 @@ function update(o) {
       item.children[1].textContent = o.report;
       item.children[1].title = o.report;
     }
-    if (o.result) {
+    if (o.type === 'defected') {
+      const link = item.querySelector('a');
+      const href = link.href;
+
       const a = item.children[3].querySelector('a');
-      a.setAttribute('href', '');
+      a.setAttribute('href', '#');
       a.onclick = () => {
-        const w = window.open();
-        w.document.write(o.result);
+        chrome.runtime.sendMessage({
+          method: 'open-report',
+          id: o.id,
+          href
+        });
         return false;
       };
       a.textContent = 'results';
+      // disable link
+      link.replaceWith(document.createTextNode(href));
     }
   }
 }

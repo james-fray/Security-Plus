@@ -12,7 +12,7 @@ if (typeof window.page === 'undefined') {
           overflow: hidden;
           position: fixed;
           background-color: transparent;
-          bottom: 0;
+          bottom: 30px;
           left: 10%;
           width: 80%;
           z-index: 2147483647;

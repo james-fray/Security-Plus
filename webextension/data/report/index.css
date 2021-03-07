@@ -1,0 +1,26 @@
+table {
+  white-space: nowrap;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  border-collapse: collapse;
+  border-spacing: 0px;
+  font-size: 13px;
+  line-height: 20px;
+  color: #333;
+}
+th {
+  border-bottom: 1px solid #DDD;
+  padding: 8px;
+  text-align: left;
+}
+td {
+  padding: 8px;
+}
+tr:nth-child(even) {
+  background: #F9F9F9;
+}
+.clean {
+  color: #33AF99;
+}
+.defected {
+  color: #ED3237;
+}

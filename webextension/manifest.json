@@ -1,9 +1,7 @@
 {
   "name": "Link Virus Check - Security Plus",
-  "short_name": "isplus",
   "description": "Provides free checking of urls for viruses. It uses up to 64 different antivirus products and scan engines to check for viruses",
-  "author": "James Fray",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "manifest_version": 2,
   "permissions": [
     "storage",

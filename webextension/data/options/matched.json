@@ -1,1 +1,47 @@
-../../../../shared/matched/matched.json
+{
+  "country-flags": {
+    "name": "Country Flags & IP WHOIS"
+  },
+  "work-offline": {
+    "name": "Work Offline"
+  },
+  "save-images": {
+    "name": "Download All Images"
+  },
+  "privacy-settings": {
+    "name": "Privacy Settings"
+  },
+  "tab-discard": {
+    "name": "Auto Tab Discard"
+  },
+  "useragent-switcher": {
+    "name": "User-Agent Switcher and Manager"
+  },
+  "block-site": {
+    "name": "Block Site"
+  },
+  "chrome-reader-view": {
+    "name": "Reader View"
+  },
+  "mute-tab": {
+    "name": "Mute Tab"
+  },
+  "font-finder": {
+    "name": "Font Finder"
+  },
+  "popup-blocker": {
+    "name": "Popup Blocker"
+  },
+  "audio-equalizer": {
+    "name": "Audio Equalizer"
+  },
+  "ecleaner": {
+    "name": "Forget Button"
+  },
+  "search-all-tabs": {
+    "name": "Search all Tabs"
+  },
+  "bookmarks-commander": {
+    "name": "Bookmarks Commander"
+  }
+}
